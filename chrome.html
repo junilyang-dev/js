@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Momentum</title>
+  <title>chrome</title>
   <link href="chrome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <h1>chrome</h1>
+  <form id="login-form">
+    <input required maxlength="15" type="text" placeholder="What is your name?" />
+    <input type="submit" vaule="Log in"/>
+  </form>
+  <h1 id="greeting" class="hidden"></h1>
   <script src="chrome.js"></script>
-  <button onclick="location.href='chrome.html'">chrome</button>
-  <button onclick="location.href='canvas.html'">canvas</button>
 </body>
 </html>
