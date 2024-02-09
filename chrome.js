@@ -8,6 +8,7 @@ function onLoginBtnClick(){
   console.log(username);
 }
 
+
 //loginButton.addEventListener('click', onLoginBtnClick);
 loginForm.addEventListener(
   'submit',onLoginSubmit);
