@@ -12,7 +12,7 @@ function onLoginBtnClick() {
 loginForm.addEventListener('submit', onLoginSubmit);//submit이벤트가 발생하면 onLoginSubmit함수 실행
 function onLoginSubmit(event) {
   event.preventDefault();//이벤트가 발생했을때 기본동작을 막는다.
-  loginForm.classList.add(HIDDEN_CLASSNAME);//
+  loginForm.classList.add(HIDDEN_CLASSNAME);//loginForm의 classList에 hidden을 추가한다.
   const username = loginInput.value;
   localStorage.setItem("username", username);//local storage에 저장
   //greeting.innerText = "Hello " + username;
