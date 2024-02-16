@@ -34,18 +34,45 @@ body {
   font-size: large;
 }
 
+/* input 요소 스타일링 */
 input {
   padding: 10px;
   border: 1px solid #ccc;
-  background: rgba(255, 255, 255, 0.5); /* 투명한 흰색 배경 설정 */
-  color: #333; /* 글자색 설정 */
+  background: rgba(255, 255, 255, 0.5);
+  color: #333;
   border-radius: 5px;
-  outline: none; /* 포커스 시에 나타나는 외곽선 제거 */
-  transition: background 0.3s; /* 배경 전환 효과 추가 */
-  width: 200px;
+  outline: none;
+  transition: background 0.3s;
+  width: 200px; /* input 너비 조절 */
 }
 
 /* input에 포커스가 되었을 때의 스타일링 */
 input:focus {
-  background: rgba(255, 255, 255, 0.8); /* 포커스 시에 약간 불투명한 흰색 배경으로 전환 */
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* button 요소 스타일링 */
+button {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-left: 10px; /* 버튼 간격 조절 */
+}
+
+/* button에 호버 시의 스타일링 */
+button:hover {
+  background: rgba(255, 255, 255, 0);
+}
+
+ul {
+  list-style: none; /* 목록 기호 없애기 */
+}
+
+/* 각 리스트 아이템 스타일링 */
+li {
+  margin-bottom: 10px; /* 각 아이템 간격 조절 */
 }
