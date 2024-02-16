@@ -3,28 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>chrome</title>
+  <title>Momentum</title>
   <link href="css/chrome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <form id="login-form">
-    <input required maxlength="15" type="text" placeholder="What is your name?" />
-    <input type="submit" vaule="Log in"/>
-  </form>
-  <h2 id="clock">00:00</h2>
-  <h1 id="greeting" class="hidden"></h1>
-  <form id="todo-form">
-    <input type="text" placeholder="Write a To Do and Press Enter" required />
-  </form>
-  <ul id="todo-list"></ul>
-  <div id="quote">
-    <span></span>
-    <span></span>
+  <img class="background-img">
+  <div class="top-bar">
+    <div id="weather">
+      <span></span>
+      <span></span>
+    </div>
   </div>
-  <div id="weather">
-    <span></span>
-    <span></span>
+  <div class="content">
+    <h1>Momentum</h1>
+    <form id="login-form">
+      <input required maxlength="15" type="text" placeholder="What is your name?" />
+      <input type="submit" vaule="Log in"/>
+    </form>
+    <h2 id="clock">00:00</h2>
+    <h1 id="greeting" class="hidden"></h1>
+    <form id="todo-form">
+      <input type="text" placeholder="Write a To Do and Press Enter" required />
+    </form>
+    <ul id="todo-list"></ul>
+    <div id="quote">
+      <span></span>
+      <span></span>
+    </div>
   </div>
+  <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
   <script src="js/chromegreeting.js"></script>
   <script src="js/chromeclock.js"></script>
   <script src="js/chromequotes.js"></script>

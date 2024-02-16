@@ -3,6 +3,7 @@ const loginInput = loginForm.querySelector('input');
 //const loginButton = loginForm.querySelector('button');
 const greeting = document.getElementById('greeting');
 const HIDDEN_CLASSNAME = 'hidden';
+
 function onLoginBtnClick() {
   const username = loginInput.value;//input의 value값을 username에 저장
   console.log(username);
