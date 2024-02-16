@@ -1,3 +1,4 @@
+/*
 const quotes = [
   {
     quote: "The way to get started is to quit talking and begin doing.",
@@ -48,3 +49,20 @@ const quotes = [
 
   quote.innerText = todaysQuote.quote;
   author.innerText = todaysQuote.author;
+
+*/ 
+const quote = document.querySelector("#quote span:first-child");
+const author = document.querySelector("#quote span:last-child");
+//https://api.quotable.io/quotes?tags=inspirational
+fetch('https://api.quotable.io/random')
+.then(response => response.json())
+.then(data => {
+  if (data.length > 0) {
+    quote.innerText = `"${data.content}"`;
+    author.innerText = `- ${data.author}`;
+    author.style.fontWeight = "bold";
+  } else {
+    console.log('해당 태그의 명언이 없습니다.');
+  }
+})
+.catch(error => console.error('API 호출 중 오류 발생:', error));
