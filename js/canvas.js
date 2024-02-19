@@ -4,21 +4,27 @@ const ctx = canvas.getContext("2d");//2d캔버스를 가져온다.
 canvas.width = 800;//canvas의 너비
 canvas.height = 800;//canvas의 높이
 
-ctx.fillStyle = "#f3cf98";//채우기 색 진베이지
-ctx.fillRect(210-40, 200-40, 15, 100);//캔버스에 사각형을 그린다.
-ctx.fillRect(350-40, 200-40, 15, 100);//캔버스에 사각형을 그린다.
-ctx.fillRect(260-40, 200-40, 60, 200);//캔버스에 사각형을 그린다. 
-ctx.fill();//채우기
-ctx.beginPath();//경로를 시작한다.
-ctx.fillStyle = "beige";//채우기 색
-ctx.arc(250, 100, 50, 0, 2 * Math.PI);//원을 그린다.x축, y축, 크기, startAngle, endAngle
-ctx.fill();//채우기
-ctx.beginPath();//경로를 시작한다.
-ctx.fillStyle = "black";//채우기 색
-ctx.arc(260+10, 80, 8, Math.PI, 2 * Math.PI);//원을 그린다.x축, y축, 크기, startAngle, endAngle
-ctx.arc(220+10, 80, 8, Math.PI, 2 * Math.PI);//원을 그린다.x축, y축, 크기, startAngle, endAngle
-ctx.fill();//채우기
-ctx.beginPath();//경로를 시작한다.
-ctx.fillStyle = "red";//채우기 색
-ctx.arc(240+10, 100, 8, 0, 1 * Math.PI);//원을 그린다.x축, y축, 크기, startAngle, endAngle
-ctx.fill();//채우기
+ctx.lineWidth = '2';//선의 두께
+
+const colors = [
+  "#ff3838",
+  "#ffb8b8",
+  "#c56cf0",
+  "#ff9f1a",
+  "#fff200",
+  "#32ff7e",
+  "#7efff5",
+  "#18dcff",
+  "#7d5fff",
+];//색깔을 배열로 저장한다.
+
+function onClick(event){
+  ctx.beginPath();
+  ctx.moveTo(800,800);//시작점
+  const color = colors[Math.floor(Math.random() * colors.length)];//무작위로 색깔을 선택한다.
+  ctx.strokeStyle = color;
+  ctx.lineTo(event.offsetX, event.offsetY);//캔버스에 점을 그린다.
+  ctx.stroke();
+}
+
+canvas.addEventListener("click", onClick);//canvas에 클릭이벤트가 발생하면 onClick함수 실행
