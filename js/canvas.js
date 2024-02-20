@@ -1,10 +1,11 @@
 const canvas = document.querySelector("canvas");//canvas를 가져온다.
 const ctx = canvas.getContext("2d");//2d캔버스를 가져온다.
+const lineWidth = document.getElementById("line-width");//line-width를 가져온다.
 
 canvas.width = 800;//canvas의 너비
 canvas.height = 800;//canvas의 높이
 
-ctx.lineWidth = 2;//선의 두께
+ctx.lineWidth = lineWidth.value;//선의 두께
 let isPainting = false;//그림을 그리는지 여부
 
 function onMove(event) {//마우스가 움직일때마다 실행되는 함수
@@ -13,6 +14,7 @@ function onMove(event) {//마우스가 움직일때마다 실행되는 함수
     ctx.stroke();//그림을 그린다.
     return;//함수를 종료한다.
   }
+  ctx.beginPath();
   ctx.moveTo(event.offsetX, event.offSetY);//마우스가 움직일때마다 캔버스 포인터 이동
 }
 
@@ -24,7 +26,12 @@ function onMouseUp(){//마우스를 뗐을때 실행되는 함수
   isPainting = false;//그림을 그리는지 여부를 false로 바꾼다.
 }
 
+function onLineWidthChange(event){//선의 두께를 바꾸는 함수
+  ctx.lineWidth = event.target.value;//선의 두께를 바꾼다
+}
+
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
 canvas.addEventListener("mousedown",onMouseDown);//마우스를 누를때 onMouseDown 함수 실행
 canvas.addEventListener("mouseup",onMouseUp);//마우스를 놓을때 onMouseUp 함수 실행
 canvas.addEventListener("mouseleave",onMouseUp)//마우스를 떠나면 onMouseUp 함수 실행
+lineWidth.addEventListener("change",onLineWidthChange);//선의 두께를 바꾸면 onLineWidthChange 함수 실행
