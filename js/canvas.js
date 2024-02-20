@@ -6,9 +6,14 @@ const colorOptions = Array.from(
   document.getElementsByClassName("color-option")
 );//color-option을 가져온다.
 const modeBtn = document.getElementById("mode-btn");//mode-btn를 가져온다.
+const destroyBtn = document.getElementById("destroy-btn");//destroy-btn를 가져온다.
+const eraserBtn = document.getElementById("eraser-btn");//eraser-btn를 가져온다.
 
-canvas.width = 800;//canvas의 너비
-canvas.height = 800;//canvas의 높이
+const CANVAS_WIDTH = 800;//canvas의 너비
+const CANVAS_HEIGHT = 800;//canvas의 높이
+
+canvas.width = CANVAS_WIDTH;//canvas의 너비
+canvas.height = CANVAS_HEIGHT;//canvas의 높이
 
 ctx.lineWidth = lineWidth.value;//선의 두께
 let isPainting = false;//그림을 그리는지 여부
@@ -62,9 +67,24 @@ function onModeClick() {//모드를 바꾸는 함수
 
 function onCanvasClick() {//캔버스를 클릭하는 함수
   if (isFilling) {//채우는지 여부가 true일때
-    ctx.fillRect(0, 0, 800, 800);//캔버스 전체 채우기
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);//캔버스 전체 채우기
   }
 }
+
+function onDestroyClick() {//캔버스를 초기화하는 함수
+  ctx.fillStyle = "white";//캔버스를 흰색으로 채우기로 변경한다.
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);//캔버스 전체 채우기
+  //흰색으로 바꾼 fillstyle 다시 원래 색으로 변경
+  ctx.strokeStyle = color.value;//선 색깔을 바꾼다
+  ctx.fillStyle = color.value;//면 색깔을 바꾼다
+}
+
+function onEraserClick() {//지우개를 눌렀을때 실행되는 함수
+  ctx.strokeStyle = "white";//지우개를 흰색으로 바꾼다.
+  isFilling = false;//채우는지 여부를 false로 바꾼다.
+  modeBtn.innerText = "Fill";//Fill 버튼을 눌렀을때 Fill로 바꾼다.
+}
+
 canvas.addEventListener("click", onCanvasClick);//canvas를 클릭할때 실행되는 함수
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
 canvas.addEventListener("mousedown",onMouseDown);//마우스를 누를때 onMouseDown 함수 실행
@@ -74,3 +94,5 @@ lineWidth.addEventListener("change",onLineWidthChange);//선의 두께를 바꾸
 color.addEventListener("change",onColorChange);//색깔을 바꾸면 onColorChange 함수
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));//color-option을 클릭하면 onColorClick 함수 실행
 modeBtn.addEventListener("click", onModeClick);//모드 버튼을 클릭하면 onModeClick 함수 실행
+destroyBtn.addEventListener("click", onDestroyClick);//destroy 버튼을 클릭하면 onDestroyClick 함수 실행
+eraserBtn.addEventListener("click", onEraserClick);//eraser 버튼을 클릭하면 onEraserClick 함수 실행
