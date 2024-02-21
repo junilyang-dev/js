@@ -48,6 +48,7 @@ function onLineWidthChange(event){//선의 두께를 바꾸는 함수
 function onColorChange(event){//색깔을 바꾸는 함수
   ctx.strokeStyle = event.target.value;//선 색깔을 바꾼다
   ctx.fillStyle = event.target.value;//면 색깔을 바꾼다
+  console.log(event.target.value);
 }
 
 function onColorClick(event) {//색깔을 클릭하는 함수
@@ -118,13 +119,13 @@ function onSaveClick() {//저장 버튼을 눌렀을때 실행되는 함수
   a.click();//a 태그를 클릭한다.
 }
   
-
+canvas.addEventListener("dblclick",onDoubleClick);//마우스로 더블클릭시 onDoubleClick 함수 실행
 canvas.addEventListener("click", onCanvasClick);//canvas를 클릭할때 실행되는 함수
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
 canvas.addEventListener("mousedown",onMouseDown);//마우스를 누를때 onMouseDown 함수 실행
 canvas.addEventListener("mouseup",onMouseUp);//마우스를 놓을때 onMouseUp 함수 실행
 canvas.addEventListener("mouseleave",onMouseUp)//마우스를 떠나면 onMouseUp 함수 실행
-canvas.addEventListener("dblclick",onDoubleClick);//마우스로 더블클릭시 onDoubleClick 함수 실행
+
 lineWidth.addEventListener("change",onLineWidthChange);//선의 두께를 바꾸면 onLineWidthChange 함수 실행
 color.addEventListener("change",onColorChange);//색깔을 바꾸면 onColorChange 함수
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));//color-option을 클릭하면 onColorClick 함수 실행
