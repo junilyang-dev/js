@@ -10,6 +10,7 @@ const destroyBtn = document.getElementById("destroy-btn");//destroy-btn를 가�
 const eraserBtn = document.getElementById("eraser-btn");//eraser-btn를 가져온다.
 const fileInput = document.getElementById("file");//file를 가져온다.
 const textInput = document.getElementById("text");//text를 가져온다.
+const saveBtn = document.getElementById("save")//save를 가져온다.
 
 const CANVAS_WIDTH = 800;//canvas의 너비
 const CANVAS_HEIGHT = 800;//canvas의 높이
@@ -103,11 +104,20 @@ function onDoubleClick(event) {//마우스르 두번 눌렸을때 실행되는 �
   if (text) {//text가 있다면
     ctx.save();//캔버스를 저장한다.
     ctx.lineWidth = 1;//선의 두께를 1로 설정한다.
-    ctx.font = "68px 'Press Start 2P'";//font를 설정한다.
+    ctx.font = "68px serif";//font를 설정한다.
     ctx.fillText(text, event.offsetX, event.offsetY);//text를 캔버스에 그린다.(텍스트, X축, Y축)
     ctx.restore();//캔버스를 복원한다.
     }
 }
+
+function onSaveClick() {//저장 버튼을 눌렀을때 실행되는 함수
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");//a 태그를 생성한다.
+  a.href = url;//a 태그에 url을 넣는다.
+  a.download = "MyMeme.png";//파일명을 설정한다.
+  a.click();//a 태그를 클릭한다.
+}
+  
 
 canvas.addEventListener("click", onCanvasClick);//canvas를 클릭할때 실행되는 함수
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
@@ -122,3 +132,4 @@ modeBtn.addEventListener("click", onModeClick);//모드 버튼을 클릭하면 o
 destroyBtn.addEventListener("click", onDestroyClick);//destroy 버튼을 클릭하면 onDestroyClick 함수 실행
 eraserBtn.addEventListener("click", onEraserClick);//eraser 버튼을 클릭하면 onEraserClick 함수 실행
 fileInput.addEventListener("change", onFileChange);//file을 선택하면 onFileChange 함수 실행
+saveBtn.addEventListener("click",onSaveClick);//save 버튼을 클릭하면 onSaveClick 함수 실행
