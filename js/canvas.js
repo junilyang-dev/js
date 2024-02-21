@@ -8,6 +8,7 @@ const colorOptions = Array.from(
 const modeBtn = document.getElementById("mode-btn");//mode-btn를 가져온다.
 const destroyBtn = document.getElementById("destroy-btn");//destroy-btn를 가져온다.
 const eraserBtn = document.getElementById("eraser-btn");//eraser-btn를 가져온다.
+const fileInput = document.getElementById("file");//file를 가져온다.
 
 const CANVAS_WIDTH = 800;//canvas의 너비
 const CANVAS_HEIGHT = 800;//canvas의 높이
@@ -85,6 +86,18 @@ function onEraserClick() {//지우개를 눌렀을때 실행되는 함수
   modeBtn.innerText = "Fill";//Fill 버튼을 눌렀을때 Fill로 바꾼다.
 }
 
+function onFileChange(event) {//파일을 선택하는 함수
+  const file = event.target.files[0];//이벤트에서 파일을 가져온다.
+  const url = URL.createObjectURL(file);//파일을 가져와 URL형태로 만든다.
+  const image = new Image();//이미지 태그를 생성한다.
+  image.src = url;//이미지 태그에 URL 타입의 이미지를 넣는다.
+  image.onload = function () {//이미지가 로드되면 실행되는 함수
+    ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);//이미지를 그린다.
+    fileInput.value = null;//파일을 비운다.
+  };
+}
+
+
 canvas.addEventListener("click", onCanvasClick);//canvas를 클릭할때 실행되는 함수
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
 canvas.addEventListener("mousedown",onMouseDown);//마우스를 누를때 onMouseDown 함수 실행
@@ -96,3 +109,4 @@ colorOptions.forEach((color) => color.addEventListener("click", onColorClick));/
 modeBtn.addEventListener("click", onModeClick);//모드 버튼을 클릭하면 onModeClick 함수 실행
 destroyBtn.addEventListener("click", onDestroyClick);//destroy 버튼을 클릭하면 onDestroyClick 함수 실행
 eraserBtn.addEventListener("click", onEraserClick);//eraser 버튼을 클릭하면 onEraserClick 함수 실행
+fileInput.addEventListener("change", onFileChange);//file을 선택하면 onFileChange 함수 실행
