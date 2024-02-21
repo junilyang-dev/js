@@ -9,13 +9,14 @@ const modeBtn = document.getElementById("mode-btn");//mode-btn를 가져온다.
 const destroyBtn = document.getElementById("destroy-btn");//destroy-btn를 가져온다.
 const eraserBtn = document.getElementById("eraser-btn");//eraser-btn를 가져온다.
 const fileInput = document.getElementById("file");//file를 가져온다.
+const textInput = document.getElementById("text");//text를 가져온다.
 
 const CANVAS_WIDTH = 800;//canvas의 너비
 const CANVAS_HEIGHT = 800;//canvas의 높이
 
 canvas.width = CANVAS_WIDTH;//canvas의 너비
 canvas.height = CANVAS_HEIGHT;//canvas의 높이
-
+ctx.lineCap = "round";//ctx의 lineCap을 round로 설정
 ctx.lineWidth = lineWidth.value;//선의 두께
 let isPainting = false;//그림을 그리는지 여부
 let isFilling = false;//채우는지 여부
@@ -97,12 +98,23 @@ function onFileChange(event) {//파일을 선택하는 함수
   };
 }
 
+function onDoubleClick(event) {//마우스르 두번 눌렸을때 실행되는 함수
+  const text = textInput.value;//textInput의 값을 가져온다.
+  if (text) {//text가 있다면
+    ctx.save();//캔버스를 저장한다.
+    ctx.lineWidth = 1;//선의 두께를 1로 설정한다.
+    ctx.font = "68px 'Press Start 2P'";//font를 설정한다.
+    ctx.fillText(text, event.offsetX, event.offsetY);//text를 캔버스에 그린다.(텍스트, X축, Y축)
+    ctx.restore();//캔버스를 복원한다.
+    }
+}
 
 canvas.addEventListener("click", onCanvasClick);//canvas를 클릭할때 실행되는 함수
 canvas.addEventListener("mousemove",onMove);//마우스가 움직일 때 onMove 함수 실행
 canvas.addEventListener("mousedown",onMouseDown);//마우스를 누를때 onMouseDown 함수 실행
 canvas.addEventListener("mouseup",onMouseUp);//마우스를 놓을때 onMouseUp 함수 실행
 canvas.addEventListener("mouseleave",onMouseUp)//마우스를 떠나면 onMouseUp 함수 실행
+canvas.addEventListener("dblclick",onDoubleClick);//마우스로 더블클릭시 onDoubleClick 함수 실행
 lineWidth.addEventListener("change",onLineWidthChange);//선의 두께를 바꾸면 onLineWidthChange 함수 실행
 color.addEventListener("change",onColorChange);//색깔을 바꾸면 onColorChange 함수
 colorOptions.forEach((color) => color.addEventListener("click", onColorClick));//color-option을 클릭하면 onColorClick 함수 실행
