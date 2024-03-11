@@ -20,14 +20,15 @@
         padding : "10px 20px",
         border : 0,
         borderRadius : 10,
+        fontSize: props.big? 20 : 10,
       }}>{props.text}</button>
     }
     //변환기 선택 및 변환기를 담는 컴포넌트 생성
     function App() {
       return(
         <div>
-          <Btn text="Save Changes"/>
-          <Btn text="Continue"/>
+          <Btn text="Save Changes" big={false}/>
+          <Btn text="Continue" big={true}/>
         </div>
       );
     }
