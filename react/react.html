@@ -14,7 +14,7 @@
     //리액트에서 생성한 컴포넌트를 렌더링할 div를 정의
     const root = document.getElementById("root");
     //div태그 생성 변경될 데이터와 클릭 이벤트 함수를 생성 함수 안에 내포하여 리렌더링 자동으로 되게 적용. React.useState(기본값, 변경 함수)를 활용하여 자동 리렌더링 적용.
-    function App() {
+    function MinutestoHours() {
       //숫자 변수 생성
       const [amount, setAmount] = React.useState(0);
       //분,시 변경 변수 생성
@@ -38,7 +38,6 @@
       }
       return(
         <div>
-          <h1 className="hi">Super Converter</h1>
           <div>
             <label htmlFor="minutes">Minutes</label>
             <input 
@@ -62,6 +61,33 @@
           </div>
           <button onClick={reset}>Reset</button>
           <button onClick={onInvert}>{inverted ? "Hour to Min" : "Min to Hour"}</button>
+        </div>
+      );
+    }
+    function KmToMiles () {
+      return(
+        <h3> KM 2 M</h3>
+      );
+    }
+    //
+    function App() {
+      const [index, setIndex] = React.useState("xx");
+      const onSelect = (event) => {
+        setIndex(event.target.value);
+      }
+      
+      return(
+        <div>
+         <h1>Super Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value="xx">Select your units</option>
+            <option value="0">Minutes to Hours</option>
+            <option value="1">Km to Miles</option>
+          </select>
+          <hr />
+          {index === "xx" ? "Please select your units" : null}
+          {index === "0" ? <MinutestoHours /> : null}
+          {index === "1" ? <KmToMiles /> : null}
         </div>
       );
     }
