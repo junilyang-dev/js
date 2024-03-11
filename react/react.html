@@ -114,7 +114,60 @@
           </div>
       );
     }
-    //시분 변환기, Km Mile 변환기 컴포넌트 생성
+    function Converter (prop) {
+        const x = prop.x;
+        const y = prop.y;
+        const calc = prop.calc*1;
+        //숫자 변수 생성
+        const [amount, setAmount] = React.useState(0);
+        //Km,Mile 변경 변수 생성
+        const [inverted, setInverted] = React.useState(false);
+        //숫자 변수 변경 시 동작 함수 생성
+        const onChange = (event) => {
+          //이벤트에서 input에 value 가져오기
+          setAmount(event.target.value);
+        }
+        //초기화 함수 생성
+        const reset = () => {
+          //숫자 초기값으로 적용
+          setAmount(0);
+        }
+        //Km,Mile 변경 함수 생성
+        const onInvert = () => {
+          //초기화 함수 호출
+          reset();
+          //true, false 변경
+          setInverted(current => !current);
+        }
+        return(
+          <div>
+            <div>
+              <label htmlFor="a">{x}</label>
+              <input 
+                id="a" 
+                placeholder={x} 
+                type="number" 
+                value={inverted ? amount * calc : amount } 
+                onChange={onChange}
+                disabled={inverted}
+              />
+            </div>
+            <div>
+              <label htmlFor="b">{y}</label>
+              <input 
+                id="b" 
+                placeholder={y} 
+                type="number"
+                value={inverted ? amount : amount / calc }
+                onChange={onChange}
+                disabled={!inverted}/>
+            </div>
+            <button onClick={reset}>Reset</button>
+            <button onClick={onInvert}>{inverted ? x + " to " + y : y + " to " + x}</button>
+          </div>
+      );
+    }
+    //변환기 선택 및 변환기를 담는 컴포넌트 생성
     function App() {
       const [index, setIndex] = React.useState("xx");
       const onSelect = (event) => {
@@ -128,11 +181,15 @@
             <option value="xx">Select your units</option>
             <option value="0">Minutes to Hours</option>
             <option value="1">Km to Miles</option>
+            <option value="2">mb to gb</option>
+            <option value="3">pound to kg</option>
           </select>
           <hr />
           {index === "xx" ? "Please select your units" : null}
           {index === "0" ? <MinutestoHours /> : null}
           {index === "1" ? <KmToMiles /> : null}
+          {index === "2" ? <Converter x="mb" y="gb" calc="1024" /> : null}
+          {index === "3" ? <Converter x="pound" y="kg" calc="2.20462" /> : null}
         </div>
       );
     }
