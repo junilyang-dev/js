@@ -79,7 +79,7 @@ li {
 }
 
 #refreshBtn {
-  background-color: #4CAF50;
+  background-color: #878787;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -93,5 +93,5 @@ li {
   transition: background-color 0.3s;
 }
 #refreshBtn:hover {
-  background-color: #45a049;
+  background-color: #707070;
 }
