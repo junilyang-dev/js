@@ -51,8 +51,10 @@ const quotes = [
   author.innerText = todaysQuote.author;
 
 */ 
-const quote = document.querySelector("#quote span:first-child");
-const author = document.querySelector("#quote span:last-child");
+const egQut = document.querySelector("#quote .egQut");
+const egAut = document.querySelector("#quote .egAut");
+const krQut = document.querySelector("#quote .krQut");
+const krAut = document.querySelector("#quote .krAut");
 //https://api.quotable.io/quotes?tags=inspirational
 /*
 fetch('https://api.quotable.io/random')
@@ -114,26 +116,19 @@ async function displayQuotes() {
   //영어 명언 
   const koreanQuote = await getKoreanQuote(englishQuote);
   
-  quote.innerText = `"${englishQuote.quote}"`;
-  quote.style.fontStyle = "italic";
-  quote.style.fontSize = "1.2em";
+  egQut.innerText = `"${englishQuote.quote}"`;
+  egQut.style.fontStyle = "italic";
+  egQut.style.fontSize = "1.2em";
   
-  author.innerText = `- ${englishQuote.author}`;
-  author.style.fontWeight = "bold";
+  egAut.innerText = `- ${englishQuote.author}`;
+  egAut.style.fontWeight = "bold";
   
-  let transLine = document.createElement('br');
-  document.getElementById("quote").appendChild(transLine);
+  krQut.innerText = `"${koreanQuote.quote}"`;
+  krQut.style.fontStyle = "italic";
+  krQut.style.fontSize = "1.2em";
   
-  let transQuote = document.createElement('span');
-  transQuote.innerText = `"${koreanQuote.quote}"`;
-  transQuote.style.fontStyle = "italic";
-  transQuote.style.fontSize = "1.2em";
-  document.getElementById("quote").appendChild(transQuote);
-  
-  let transAuthor = document.createElement('span');
-  transAuthor.innerText = `- ${koreanQuote.author}`;
-  transAuthor.style.fontWeight = "bold";
-  document.getElementById("quote").appendChild(transAuthor);
+  krAut.innerText = `- ${koreanQuote.author}`;
+  krAut.style.fontWeight = "bold";
 }
 
 // 호출
