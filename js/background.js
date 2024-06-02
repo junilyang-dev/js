@@ -15,5 +15,10 @@ const bgImage = document.querySelector(".background-img");
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-// 랜덤 이미지를 가져와 배경으로 설정
-  bgImage.src = `https://picsum.photos/${width}/${height}`;
+function getBackground() {
+  let random = Math.floor(Math.random() * 100);
+  // 랜덤 이미지를 가져와 배경으로 설정
+  bgImage.src = `https://picsum.photos/${width}/${height}?random=${random}`;
+}
+
+getBackground();

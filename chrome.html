@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width">
   <title>Momentum</title>
   <link href="css/chrome.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous">
 </head>
 <body>
   <img class="background-img">
@@ -15,6 +16,9 @@
     </div>
   </div>
   <div class="content">
+    <div>
+      <button id="refreshBtn"><i class="fas fa-sync-alt"></i> ReFresh</button>
+    </div>
     <h1>Momentum</h1>
     <form id="login-form">
       <input required maxlength="15" type="text" placeholder="What is your name?" />
@@ -37,5 +41,12 @@
   <script src="js/background.js"></script>
   <script src="js/todo.js"></script>
   <script src="js/weather.js"></script>
+  <script>
+    const refreshBtn = document.getElementById("refreshBtn");
+    refreshBtn.addEventListener("click", function() {
+      getBackground();
+      displayQuotes();
+    });
+  </script>
 </body>
 </html>
